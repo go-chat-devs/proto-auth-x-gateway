@@ -2,52 +2,160 @@ syntax = "proto3";
 
 package auth;
 
+import "google/protobuf/empty.proto";
 option go_package = "github.com/go-chat-devs/proto-auth-x-gateway/gen/go/auth;authv1";
 
-
+//lklfd
 service Auth {
+  //
   rpc Register(RegisterRequest) returns (RegisterResponse);
+  //
   rpc Login(LoginRequest) returns (LoginResponse);
-  rpc Refresh(RefreshRequest) returns (RefreshResponse);
+  //
+  //
+  rpc SetupTOTP(SetupTOTPRequest) returns (SetupTOTPResponse);
+  //
+  rpc SetupTOTPValidate(SetupTOTPValidateRequest) returns (SetupTOTPValidateResponse);
+  //
+  rpc ValidateTOTP(ValidateTOTPRequest) returns (ValidateTOTPResponse);
+  //
   rpc Logout(LogoutRequest) returns (LogoutResponse);
+
+}
+
+
+//----------------------------------------------
+message ErrUsernameTaken{
+  string message = 1;
+}
+
+message ErrAlreadyRegistered{
+  string message = 1;
+}
+
+message ErrUnspecified {
+  string message = 1;
+    
 }
 
 message RegisterRequest {
   string email = 1;
   string password = 2;
-  string username = 3;
+  
 }
 
+
 message RegisterResponse {
-  int64 user_id = 1;
-  string access_token = 2;
-  string refresh_token = 3;
-  int64 access_expires_in = 4;
+  oneof res {
+    ErrAlreadyRegistered err_already_registered = 1;
+    ErrUsernameTaken err_username_taken = 2;
+    ErrUnspecified err_unspecified = 3;
+    google.protobuf.Empty success = 4;
+  }
 }
+//-----------------------------------------------------
 
 message LoginRequest {
   string email = 1;
   string password = 2;
 }
 
+
+message ErrInvalidCredentials {
+  string message = 1;
+}
+
 message LoginResponse {
-  string access_token = 1;
-  string refresh_token = 2;
-  int64 access_expires_in = 3;
+  bytes token = 1;
+  oneof error {
+    ErrUnspecified err_unspecified = 2;
+    ErrInvalidCredentials err_invalid_credentials = 3;
+    google.protobuf.Empty success = 4;
+  }
+}
+//---------------------------
+
+
+message Url {
+  string url = 1;
+  
+}
+message Key{
+  string orig = 1;
+  Url url = 2;
 }
 
-message RefreshRequest {
-  string refresh_token = 1;
+
+
+message SetupTOTPRequest {
+  bytes sessionkey = 1;
 }
 
-message RefreshResponse {
-  string access_token = 1;
-  string refresh_token = 2;
-  int64 access_expires_in = 3;
+
+message SetupTOTPResponse {
+  message Res{
+    Key key = 1;
+    bytes token = 2;
+  }
 }
+
+
+
+//-----------------------
+
+
+message ErrInvalidCode {
+  string messsage =1;
+}
+
+message SetupTOTPValidateRequest {
+  bytes sessionkey = 1;
+  bytes setup2fa = 2;
+  string code = 3;
+}
+
+
+message SetupTOTPValidateResponse {
+  oneof error {
+    ErrUnspecified err_unspecified = 1;
+    ErrInvalidCode err_invalid_code = 2;
+    google.protobuf.Empty success = 3;
+  }
+}
+//-----------------------
+
+
+message ValidateTOTPRequest{
+  bytes token2fa = 1;
+  string code = 2;
+}
+
+
+message ValidateTOTPResponse {
+  bytes sessionkey = 1;
+  oneof error {
+    ErrUnspecified err_unspecified = 2;
+    ErrInvalidCode err_invalid_code = 3;
+    google.protobuf.Empty success = 4;
+  }
+}
+
+
+
+
+
+//-----------------------------
 
 message LogoutRequest {
-  string refresh_token = 1;
+  bytes sessionkey = 1;
+  string password = 2;
 }
 
-message LogoutResponse {}
+message LogoutResponse {
+  oneof error {
+    ErrUnspecified err_unspecified = 1;
+    ErrInvalidCredentials err_invalid_credentials = 2;
+    google.protobuf.Empty success = 3;
+  }
+}
+
