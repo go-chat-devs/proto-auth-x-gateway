@@ -91,12 +91,13 @@ message SetupTOTPRequest {
   bytes sessionkey = 1;
 }
 
+message Res {
+  Key key = 1;
+  bytes token = 2;
+}
 
 message SetupTOTPResponse {
-  message Res{
-    Key key = 1;
-    bytes token = 2;
-  }
+  Res res = 1;
 }
 
 

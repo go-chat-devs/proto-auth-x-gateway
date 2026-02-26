@@ -663,15 +663,68 @@ func (x *SetupTOTPRequest) GetSessionkey() []byte {
 	return nil
 }
 
+type Res struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Key           *Key                   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Token         []byte                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Res) Reset() {
+	*x = Res{}
+	mi := &file_auth_auth_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Res) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Res) ProtoMessage() {}
+
+func (x *Res) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Res.ProtoReflect.Descriptor instead.
+func (*Res) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *Res) GetKey() *Key {
+	if x != nil {
+		return x.Key
+	}
+	return nil
+}
+
+func (x *Res) GetToken() []byte {
+	if x != nil {
+		return x.Token
+	}
+	return nil
+}
+
 type SetupTOTPResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Res           *Res                   `protobuf:"bytes,1,opt,name=res,proto3" json:"res,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SetupTOTPResponse) Reset() {
 	*x = SetupTOTPResponse{}
-	mi := &file_auth_auth_proto_msgTypes[11]
+	mi := &file_auth_auth_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -683,7 +736,7 @@ func (x *SetupTOTPResponse) String() string {
 func (*SetupTOTPResponse) ProtoMessage() {}
 
 func (x *SetupTOTPResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[11]
+	mi := &file_auth_auth_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -696,7 +749,14 @@ func (x *SetupTOTPResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetupTOTPResponse.ProtoReflect.Descriptor instead.
 func (*SetupTOTPResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{11}
+	return file_auth_auth_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *SetupTOTPResponse) GetRes() *Res {
+	if x != nil {
+		return x.Res
+	}
+	return nil
 }
 
 type ErrInvalidCode struct {
@@ -708,7 +768,7 @@ type ErrInvalidCode struct {
 
 func (x *ErrInvalidCode) Reset() {
 	*x = ErrInvalidCode{}
-	mi := &file_auth_auth_proto_msgTypes[12]
+	mi := &file_auth_auth_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -720,7 +780,7 @@ func (x *ErrInvalidCode) String() string {
 func (*ErrInvalidCode) ProtoMessage() {}
 
 func (x *ErrInvalidCode) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[12]
+	mi := &file_auth_auth_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -733,7 +793,7 @@ func (x *ErrInvalidCode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ErrInvalidCode.ProtoReflect.Descriptor instead.
 func (*ErrInvalidCode) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{12}
+	return file_auth_auth_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ErrInvalidCode) GetMesssage() string {
@@ -754,7 +814,7 @@ type SetupTOTPValidateRequest struct {
 
 func (x *SetupTOTPValidateRequest) Reset() {
 	*x = SetupTOTPValidateRequest{}
-	mi := &file_auth_auth_proto_msgTypes[13]
+	mi := &file_auth_auth_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -766,7 +826,7 @@ func (x *SetupTOTPValidateRequest) String() string {
 func (*SetupTOTPValidateRequest) ProtoMessage() {}
 
 func (x *SetupTOTPValidateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[13]
+	mi := &file_auth_auth_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -779,7 +839,7 @@ func (x *SetupTOTPValidateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetupTOTPValidateRequest.ProtoReflect.Descriptor instead.
 func (*SetupTOTPValidateRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{13}
+	return file_auth_auth_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *SetupTOTPValidateRequest) GetSessionkey() []byte {
@@ -817,7 +877,7 @@ type SetupTOTPValidateResponse struct {
 
 func (x *SetupTOTPValidateResponse) Reset() {
 	*x = SetupTOTPValidateResponse{}
-	mi := &file_auth_auth_proto_msgTypes[14]
+	mi := &file_auth_auth_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -829,7 +889,7 @@ func (x *SetupTOTPValidateResponse) String() string {
 func (*SetupTOTPValidateResponse) ProtoMessage() {}
 
 func (x *SetupTOTPValidateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[14]
+	mi := &file_auth_auth_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -842,7 +902,7 @@ func (x *SetupTOTPValidateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetupTOTPValidateResponse.ProtoReflect.Descriptor instead.
 func (*SetupTOTPValidateResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{14}
+	return file_auth_auth_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *SetupTOTPValidateResponse) GetError() isSetupTOTPValidateResponse_Error {
@@ -911,7 +971,7 @@ type ValidateTOTPRequest struct {
 
 func (x *ValidateTOTPRequest) Reset() {
 	*x = ValidateTOTPRequest{}
-	mi := &file_auth_auth_proto_msgTypes[15]
+	mi := &file_auth_auth_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -923,7 +983,7 @@ func (x *ValidateTOTPRequest) String() string {
 func (*ValidateTOTPRequest) ProtoMessage() {}
 
 func (x *ValidateTOTPRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[15]
+	mi := &file_auth_auth_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -936,7 +996,7 @@ func (x *ValidateTOTPRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateTOTPRequest.ProtoReflect.Descriptor instead.
 func (*ValidateTOTPRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{15}
+	return file_auth_auth_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ValidateTOTPRequest) GetToken2Fa() []byte {
@@ -968,7 +1028,7 @@ type ValidateTOTPResponse struct {
 
 func (x *ValidateTOTPResponse) Reset() {
 	*x = ValidateTOTPResponse{}
-	mi := &file_auth_auth_proto_msgTypes[16]
+	mi := &file_auth_auth_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -980,7 +1040,7 @@ func (x *ValidateTOTPResponse) String() string {
 func (*ValidateTOTPResponse) ProtoMessage() {}
 
 func (x *ValidateTOTPResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[16]
+	mi := &file_auth_auth_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -993,7 +1053,7 @@ func (x *ValidateTOTPResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateTOTPResponse.ProtoReflect.Descriptor instead.
 func (*ValidateTOTPResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{16}
+	return file_auth_auth_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ValidateTOTPResponse) GetSessionkey() []byte {
@@ -1069,7 +1129,7 @@ type LogoutRequest struct {
 
 func (x *LogoutRequest) Reset() {
 	*x = LogoutRequest{}
-	mi := &file_auth_auth_proto_msgTypes[17]
+	mi := &file_auth_auth_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1081,7 +1141,7 @@ func (x *LogoutRequest) String() string {
 func (*LogoutRequest) ProtoMessage() {}
 
 func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[17]
+	mi := &file_auth_auth_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1094,7 +1154,7 @@ func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogoutRequest.ProtoReflect.Descriptor instead.
 func (*LogoutRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{17}
+	return file_auth_auth_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *LogoutRequest) GetSessionkey() []byte {
@@ -1125,7 +1185,7 @@ type LogoutResponse struct {
 
 func (x *LogoutResponse) Reset() {
 	*x = LogoutResponse{}
-	mi := &file_auth_auth_proto_msgTypes[18]
+	mi := &file_auth_auth_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1137,7 +1197,7 @@ func (x *LogoutResponse) String() string {
 func (*LogoutResponse) ProtoMessage() {}
 
 func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[18]
+	mi := &file_auth_auth_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1150,7 +1210,7 @@ func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogoutResponse.ProtoReflect.Descriptor instead.
 func (*LogoutResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{18}
+	return file_auth_auth_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *LogoutResponse) GetError() isLogoutResponse_Error {
@@ -1209,58 +1269,6 @@ func (*LogoutResponse_ErrInvalidCredentials) isLogoutResponse_Error() {}
 
 func (*LogoutResponse_Success) isLogoutResponse_Error() {}
 
-type SetupTOTPResponse_Res struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Key           *Key                   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	Token         []byte                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SetupTOTPResponse_Res) Reset() {
-	*x = SetupTOTPResponse_Res{}
-	mi := &file_auth_auth_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SetupTOTPResponse_Res) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SetupTOTPResponse_Res) ProtoMessage() {}
-
-func (x *SetupTOTPResponse_Res) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SetupTOTPResponse_Res.ProtoReflect.Descriptor instead.
-func (*SetupTOTPResponse_Res) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{11, 0}
-}
-
-func (x *SetupTOTPResponse_Res) GetKey() *Key {
-	if x != nil {
-		return x.Key
-	}
-	return nil
-}
-
-func (x *SetupTOTPResponse_Res) GetToken() []byte {
-	if x != nil {
-		return x.Token
-	}
-	return nil
-}
-
 var File_auth_auth_proto protoreflect.FileDescriptor
 
 const file_auth_auth_proto_rawDesc = "" +
@@ -1300,11 +1308,12 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x10SetupTOTPRequest\x12\x1e\n" +
 	"\n" +
 	"sessionkey\x18\x01 \x01(\fR\n" +
-	"sessionkey\"M\n" +
-	"\x11SetupTOTPResponse\x1a8\n" +
+	"sessionkey\"8\n" +
 	"\x03Res\x12\x1b\n" +
 	"\x03key\x18\x01 \x01(\v2\t.auth.KeyR\x03key\x12\x14\n" +
-	"\x05token\x18\x02 \x01(\fR\x05token\",\n" +
+	"\x05token\x18\x02 \x01(\fR\x05token\"0\n" +
+	"\x11SetupTOTPResponse\x12\x1b\n" +
+	"\x03res\x18\x01 \x01(\v2\t.auth.ResR\x03res\",\n" +
 	"\x0eErrInvalidCode\x12\x1a\n" +
 	"\bmesssage\x18\x01 \x01(\tR\bmesssage\"j\n" +
 	"\x18SetupTOTPValidateRequest\x12\x1e\n" +
@@ -1372,15 +1381,15 @@ var file_auth_auth_proto_goTypes = []any{
 	(*Url)(nil),                       // 8: auth.Url
 	(*Key)(nil),                       // 9: auth.Key
 	(*SetupTOTPRequest)(nil),          // 10: auth.SetupTOTPRequest
-	(*SetupTOTPResponse)(nil),         // 11: auth.SetupTOTPResponse
-	(*ErrInvalidCode)(nil),            // 12: auth.ErrInvalidCode
-	(*SetupTOTPValidateRequest)(nil),  // 13: auth.SetupTOTPValidateRequest
-	(*SetupTOTPValidateResponse)(nil), // 14: auth.SetupTOTPValidateResponse
-	(*ValidateTOTPRequest)(nil),       // 15: auth.ValidateTOTPRequest
-	(*ValidateTOTPResponse)(nil),      // 16: auth.ValidateTOTPResponse
-	(*LogoutRequest)(nil),             // 17: auth.LogoutRequest
-	(*LogoutResponse)(nil),            // 18: auth.LogoutResponse
-	(*SetupTOTPResponse_Res)(nil),     // 19: auth.SetupTOTPResponse.Res
+	(*Res)(nil),                       // 11: auth.Res
+	(*SetupTOTPResponse)(nil),         // 12: auth.SetupTOTPResponse
+	(*ErrInvalidCode)(nil),            // 13: auth.ErrInvalidCode
+	(*SetupTOTPValidateRequest)(nil),  // 14: auth.SetupTOTPValidateRequest
+	(*SetupTOTPValidateResponse)(nil), // 15: auth.SetupTOTPValidateResponse
+	(*ValidateTOTPRequest)(nil),       // 16: auth.ValidateTOTPRequest
+	(*ValidateTOTPResponse)(nil),      // 17: auth.ValidateTOTPResponse
+	(*LogoutRequest)(nil),             // 18: auth.LogoutRequest
+	(*LogoutResponse)(nil),            // 19: auth.LogoutResponse
 	(*emptypb.Empty)(nil),             // 20: google.protobuf.Empty
 }
 var file_auth_auth_proto_depIdxs = []int32{
@@ -1392,33 +1401,34 @@ var file_auth_auth_proto_depIdxs = []int32{
 	6,  // 5: auth.LoginResponse.err_invalid_credentials:type_name -> auth.ErrInvalidCredentials
 	20, // 6: auth.LoginResponse.success:type_name -> google.protobuf.Empty
 	8,  // 7: auth.Key.url:type_name -> auth.Url
-	2,  // 8: auth.SetupTOTPValidateResponse.err_unspecified:type_name -> auth.ErrUnspecified
-	12, // 9: auth.SetupTOTPValidateResponse.err_invalid_code:type_name -> auth.ErrInvalidCode
-	20, // 10: auth.SetupTOTPValidateResponse.success:type_name -> google.protobuf.Empty
-	2,  // 11: auth.ValidateTOTPResponse.err_unspecified:type_name -> auth.ErrUnspecified
-	12, // 12: auth.ValidateTOTPResponse.err_invalid_code:type_name -> auth.ErrInvalidCode
-	20, // 13: auth.ValidateTOTPResponse.success:type_name -> google.protobuf.Empty
-	2,  // 14: auth.LogoutResponse.err_unspecified:type_name -> auth.ErrUnspecified
-	6,  // 15: auth.LogoutResponse.err_invalid_credentials:type_name -> auth.ErrInvalidCredentials
-	20, // 16: auth.LogoutResponse.success:type_name -> google.protobuf.Empty
-	9,  // 17: auth.SetupTOTPResponse.Res.key:type_name -> auth.Key
-	3,  // 18: auth.Auth.Register:input_type -> auth.RegisterRequest
-	5,  // 19: auth.Auth.Login:input_type -> auth.LoginRequest
-	10, // 20: auth.Auth.SetupTOTP:input_type -> auth.SetupTOTPRequest
-	13, // 21: auth.Auth.SetupTOTPValidate:input_type -> auth.SetupTOTPValidateRequest
-	15, // 22: auth.Auth.ValidateTOTP:input_type -> auth.ValidateTOTPRequest
-	17, // 23: auth.Auth.Logout:input_type -> auth.LogoutRequest
-	4,  // 24: auth.Auth.Register:output_type -> auth.RegisterResponse
-	7,  // 25: auth.Auth.Login:output_type -> auth.LoginResponse
-	11, // 26: auth.Auth.SetupTOTP:output_type -> auth.SetupTOTPResponse
-	14, // 27: auth.Auth.SetupTOTPValidate:output_type -> auth.SetupTOTPValidateResponse
-	16, // 28: auth.Auth.ValidateTOTP:output_type -> auth.ValidateTOTPResponse
-	18, // 29: auth.Auth.Logout:output_type -> auth.LogoutResponse
-	24, // [24:30] is the sub-list for method output_type
-	18, // [18:24] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	9,  // 8: auth.Res.key:type_name -> auth.Key
+	11, // 9: auth.SetupTOTPResponse.res:type_name -> auth.Res
+	2,  // 10: auth.SetupTOTPValidateResponse.err_unspecified:type_name -> auth.ErrUnspecified
+	13, // 11: auth.SetupTOTPValidateResponse.err_invalid_code:type_name -> auth.ErrInvalidCode
+	20, // 12: auth.SetupTOTPValidateResponse.success:type_name -> google.protobuf.Empty
+	2,  // 13: auth.ValidateTOTPResponse.err_unspecified:type_name -> auth.ErrUnspecified
+	13, // 14: auth.ValidateTOTPResponse.err_invalid_code:type_name -> auth.ErrInvalidCode
+	20, // 15: auth.ValidateTOTPResponse.success:type_name -> google.protobuf.Empty
+	2,  // 16: auth.LogoutResponse.err_unspecified:type_name -> auth.ErrUnspecified
+	6,  // 17: auth.LogoutResponse.err_invalid_credentials:type_name -> auth.ErrInvalidCredentials
+	20, // 18: auth.LogoutResponse.success:type_name -> google.protobuf.Empty
+	3,  // 19: auth.Auth.Register:input_type -> auth.RegisterRequest
+	5,  // 20: auth.Auth.Login:input_type -> auth.LoginRequest
+	10, // 21: auth.Auth.SetupTOTP:input_type -> auth.SetupTOTPRequest
+	14, // 22: auth.Auth.SetupTOTPValidate:input_type -> auth.SetupTOTPValidateRequest
+	16, // 23: auth.Auth.ValidateTOTP:input_type -> auth.ValidateTOTPRequest
+	18, // 24: auth.Auth.Logout:input_type -> auth.LogoutRequest
+	4,  // 25: auth.Auth.Register:output_type -> auth.RegisterResponse
+	7,  // 26: auth.Auth.Login:output_type -> auth.LoginResponse
+	12, // 27: auth.Auth.SetupTOTP:output_type -> auth.SetupTOTPResponse
+	15, // 28: auth.Auth.SetupTOTPValidate:output_type -> auth.SetupTOTPValidateResponse
+	17, // 29: auth.Auth.ValidateTOTP:output_type -> auth.ValidateTOTPResponse
+	19, // 30: auth.Auth.Logout:output_type -> auth.LogoutResponse
+	25, // [25:31] is the sub-list for method output_type
+	19, // [19:25] is the sub-list for method input_type
+	19, // [19:19] is the sub-list for extension type_name
+	19, // [19:19] is the sub-list for extension extendee
+	0,  // [0:19] is the sub-list for field type_name
 }
 
 func init() { file_auth_auth_proto_init() }
@@ -1437,17 +1447,17 @@ func file_auth_auth_proto_init() {
 		(*LoginResponse_ErrInvalidCredentials)(nil),
 		(*LoginResponse_Success)(nil),
 	}
-	file_auth_auth_proto_msgTypes[14].OneofWrappers = []any{
+	file_auth_auth_proto_msgTypes[15].OneofWrappers = []any{
 		(*SetupTOTPValidateResponse_ErrUnspecified)(nil),
 		(*SetupTOTPValidateResponse_ErrInvalidCode)(nil),
 		(*SetupTOTPValidateResponse_Success)(nil),
 	}
-	file_auth_auth_proto_msgTypes[16].OneofWrappers = []any{
+	file_auth_auth_proto_msgTypes[17].OneofWrappers = []any{
 		(*ValidateTOTPResponse_ErrUnspecified)(nil),
 		(*ValidateTOTPResponse_ErrInvalidCode)(nil),
 		(*ValidateTOTPResponse_Success)(nil),
 	}
-	file_auth_auth_proto_msgTypes[18].OneofWrappers = []any{
+	file_auth_auth_proto_msgTypes[19].OneofWrappers = []any{
 		(*LogoutResponse_ErrUnspecified)(nil),
 		(*LogoutResponse_ErrInvalidCredentials)(nil),
 		(*LogoutResponse_Success)(nil),
