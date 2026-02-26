@@ -1,8 +1,6 @@
 syntax = "proto3";
 
 package auth;
-
-import "google/protobuf/empty.proto";
 option go_package = "github.com/go-chat-devs/proto-auth-x-gateway/gen/go/auth;authv1";
 
 //lklfd
@@ -25,18 +23,6 @@ service Auth {
 
 
 //----------------------------------------------
-message ErrUsernameTaken{
-  string message = 1;
-}
-
-message ErrAlreadyRegistered{
-  string message = 1;
-}
-
-message ErrUnspecified {
-  string message = 1;
-    
-}
 
 message RegisterRequest {
   string email = 1;
@@ -46,12 +32,6 @@ message RegisterRequest {
 
 
 message RegisterResponse {
-  oneof res {
-    ErrAlreadyRegistered err_already_registered = 1;
-    ErrUsernameTaken err_username_taken = 2;
-    ErrUnspecified err_unspecified = 3;
-    google.protobuf.Empty success = 4;
-  }
 }
 //-----------------------------------------------------
 
@@ -67,11 +47,6 @@ message ErrInvalidCredentials {
 
 message LoginResponse {
   bytes token = 1;
-  oneof error {
-    ErrUnspecified err_unspecified = 2;
-    ErrInvalidCredentials err_invalid_credentials = 3;
-    google.protobuf.Empty success = 4;
-  }
 }
 //---------------------------
 
@@ -91,12 +66,13 @@ message SetupTOTPRequest {
   bytes sessionkey = 1;
 }
 
+message Res {
+  Key key = 1;
+  bytes token = 2;
+}
 
 message SetupTOTPResponse {
-  message Res{
-    Key key = 1;
-    bytes token = 2;
-  }
+  Res res = 1;
 }
 
 
@@ -116,11 +92,6 @@ message SetupTOTPValidateRequest {
 
 
 message SetupTOTPValidateResponse {
-  oneof error {
-    ErrUnspecified err_unspecified = 1;
-    ErrInvalidCode err_invalid_code = 2;
-    google.protobuf.Empty success = 3;
-  }
 }
 //-----------------------
 
@@ -133,11 +104,6 @@ message ValidateTOTPRequest{
 
 message ValidateTOTPResponse {
   bytes sessionkey = 1;
-  oneof error {
-    ErrUnspecified err_unspecified = 2;
-    ErrInvalidCode err_invalid_code = 3;
-    google.protobuf.Empty success = 4;
-  }
 }
 
 
@@ -151,11 +117,5 @@ message LogoutRequest {
   string password = 2;
 }
 
-message LogoutResponse {
-  oneof error {
-    ErrUnspecified err_unspecified = 1;
-    ErrInvalidCredentials err_invalid_credentials = 2;
-    google.protobuf.Empty success = 3;
-  }
-}
+message LogoutResponse {}
 

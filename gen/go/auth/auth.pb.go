@@ -9,7 +9,6 @@ package authv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -22,139 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ----------------------------------------------
-type ErrUsernameTaken struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ErrUsernameTaken) Reset() {
-	*x = ErrUsernameTaken{}
-	mi := &file_auth_auth_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ErrUsernameTaken) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ErrUsernameTaken) ProtoMessage() {}
-
-func (x *ErrUsernameTaken) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ErrUsernameTaken.ProtoReflect.Descriptor instead.
-func (*ErrUsernameTaken) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *ErrUsernameTaken) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
-}
-
-type ErrAlreadyRegistered struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ErrAlreadyRegistered) Reset() {
-	*x = ErrAlreadyRegistered{}
-	mi := &file_auth_auth_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ErrAlreadyRegistered) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ErrAlreadyRegistered) ProtoMessage() {}
-
-func (x *ErrAlreadyRegistered) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ErrAlreadyRegistered.ProtoReflect.Descriptor instead.
-func (*ErrAlreadyRegistered) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ErrAlreadyRegistered) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
-}
-
-type ErrUnspecified struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ErrUnspecified) Reset() {
-	*x = ErrUnspecified{}
-	mi := &file_auth_auth_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ErrUnspecified) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ErrUnspecified) ProtoMessage() {}
-
-func (x *ErrUnspecified) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ErrUnspecified.ProtoReflect.Descriptor instead.
-func (*ErrUnspecified) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *ErrUnspecified) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
-}
-
 type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
@@ -165,7 +31,7 @@ type RegisterRequest struct {
 
 func (x *RegisterRequest) Reset() {
 	*x = RegisterRequest{}
-	mi := &file_auth_auth_proto_msgTypes[3]
+	mi := &file_auth_auth_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -177,7 +43,7 @@ func (x *RegisterRequest) String() string {
 func (*RegisterRequest) ProtoMessage() {}
 
 func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[3]
+	mi := &file_auth_auth_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -190,7 +56,7 @@ func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
 func (*RegisterRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{3}
+	return file_auth_auth_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *RegisterRequest) GetEmail() string {
@@ -208,21 +74,14 @@ func (x *RegisterRequest) GetPassword() string {
 }
 
 type RegisterResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Types that are valid to be assigned to Res:
-	//
-	//	*RegisterResponse_ErrAlreadyRegistered
-	//	*RegisterResponse_ErrUsernameTaken
-	//	*RegisterResponse_ErrUnspecified
-	//	*RegisterResponse_Success
-	Res           isRegisterResponse_Res `protobuf_oneof:"res"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RegisterResponse) Reset() {
 	*x = RegisterResponse{}
-	mi := &file_auth_auth_proto_msgTypes[4]
+	mi := &file_auth_auth_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -234,7 +93,7 @@ func (x *RegisterResponse) String() string {
 func (*RegisterResponse) ProtoMessage() {}
 
 func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[4]
+	mi := &file_auth_auth_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -247,79 +106,8 @@ func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterResponse.ProtoReflect.Descriptor instead.
 func (*RegisterResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{4}
+	return file_auth_auth_proto_rawDescGZIP(), []int{1}
 }
-
-func (x *RegisterResponse) GetRes() isRegisterResponse_Res {
-	if x != nil {
-		return x.Res
-	}
-	return nil
-}
-
-func (x *RegisterResponse) GetErrAlreadyRegistered() *ErrAlreadyRegistered {
-	if x != nil {
-		if x, ok := x.Res.(*RegisterResponse_ErrAlreadyRegistered); ok {
-			return x.ErrAlreadyRegistered
-		}
-	}
-	return nil
-}
-
-func (x *RegisterResponse) GetErrUsernameTaken() *ErrUsernameTaken {
-	if x != nil {
-		if x, ok := x.Res.(*RegisterResponse_ErrUsernameTaken); ok {
-			return x.ErrUsernameTaken
-		}
-	}
-	return nil
-}
-
-func (x *RegisterResponse) GetErrUnspecified() *ErrUnspecified {
-	if x != nil {
-		if x, ok := x.Res.(*RegisterResponse_ErrUnspecified); ok {
-			return x.ErrUnspecified
-		}
-	}
-	return nil
-}
-
-func (x *RegisterResponse) GetSuccess() *emptypb.Empty {
-	if x != nil {
-		if x, ok := x.Res.(*RegisterResponse_Success); ok {
-			return x.Success
-		}
-	}
-	return nil
-}
-
-type isRegisterResponse_Res interface {
-	isRegisterResponse_Res()
-}
-
-type RegisterResponse_ErrAlreadyRegistered struct {
-	ErrAlreadyRegistered *ErrAlreadyRegistered `protobuf:"bytes,1,opt,name=err_already_registered,json=errAlreadyRegistered,proto3,oneof"`
-}
-
-type RegisterResponse_ErrUsernameTaken struct {
-	ErrUsernameTaken *ErrUsernameTaken `protobuf:"bytes,2,opt,name=err_username_taken,json=errUsernameTaken,proto3,oneof"`
-}
-
-type RegisterResponse_ErrUnspecified struct {
-	ErrUnspecified *ErrUnspecified `protobuf:"bytes,3,opt,name=err_unspecified,json=errUnspecified,proto3,oneof"`
-}
-
-type RegisterResponse_Success struct {
-	Success *emptypb.Empty `protobuf:"bytes,4,opt,name=success,proto3,oneof"`
-}
-
-func (*RegisterResponse_ErrAlreadyRegistered) isRegisterResponse_Res() {}
-
-func (*RegisterResponse_ErrUsernameTaken) isRegisterResponse_Res() {}
-
-func (*RegisterResponse_ErrUnspecified) isRegisterResponse_Res() {}
-
-func (*RegisterResponse_Success) isRegisterResponse_Res() {}
 
 type LoginRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -331,7 +119,7 @@ type LoginRequest struct {
 
 func (x *LoginRequest) Reset() {
 	*x = LoginRequest{}
-	mi := &file_auth_auth_proto_msgTypes[5]
+	mi := &file_auth_auth_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -343,7 +131,7 @@ func (x *LoginRequest) String() string {
 func (*LoginRequest) ProtoMessage() {}
 
 func (x *LoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[5]
+	mi := &file_auth_auth_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -356,7 +144,7 @@ func (x *LoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{5}
+	return file_auth_auth_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *LoginRequest) GetEmail() string {
@@ -382,7 +170,7 @@ type ErrInvalidCredentials struct {
 
 func (x *ErrInvalidCredentials) Reset() {
 	*x = ErrInvalidCredentials{}
-	mi := &file_auth_auth_proto_msgTypes[6]
+	mi := &file_auth_auth_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -394,7 +182,7 @@ func (x *ErrInvalidCredentials) String() string {
 func (*ErrInvalidCredentials) ProtoMessage() {}
 
 func (x *ErrInvalidCredentials) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[6]
+	mi := &file_auth_auth_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -407,7 +195,7 @@ func (x *ErrInvalidCredentials) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ErrInvalidCredentials.ProtoReflect.Descriptor instead.
 func (*ErrInvalidCredentials) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{6}
+	return file_auth_auth_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ErrInvalidCredentials) GetMessage() string {
@@ -418,21 +206,15 @@ func (x *ErrInvalidCredentials) GetMessage() string {
 }
 
 type LoginResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	Token []byte                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	// Types that are valid to be assigned to Error:
-	//
-	//	*LoginResponse_ErrUnspecified
-	//	*LoginResponse_ErrInvalidCredentials
-	//	*LoginResponse_Success
-	Error         isLoginResponse_Error `protobuf_oneof:"error"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Token         []byte                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *LoginResponse) Reset() {
 	*x = LoginResponse{}
-	mi := &file_auth_auth_proto_msgTypes[7]
+	mi := &file_auth_auth_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -444,7 +226,7 @@ func (x *LoginResponse) String() string {
 func (*LoginResponse) ProtoMessage() {}
 
 func (x *LoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[7]
+	mi := &file_auth_auth_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -457,7 +239,7 @@ func (x *LoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{7}
+	return file_auth_auth_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *LoginResponse) GetToken() []byte {
@@ -466,62 +248,6 @@ func (x *LoginResponse) GetToken() []byte {
 	}
 	return nil
 }
-
-func (x *LoginResponse) GetError() isLoginResponse_Error {
-	if x != nil {
-		return x.Error
-	}
-	return nil
-}
-
-func (x *LoginResponse) GetErrUnspecified() *ErrUnspecified {
-	if x != nil {
-		if x, ok := x.Error.(*LoginResponse_ErrUnspecified); ok {
-			return x.ErrUnspecified
-		}
-	}
-	return nil
-}
-
-func (x *LoginResponse) GetErrInvalidCredentials() *ErrInvalidCredentials {
-	if x != nil {
-		if x, ok := x.Error.(*LoginResponse_ErrInvalidCredentials); ok {
-			return x.ErrInvalidCredentials
-		}
-	}
-	return nil
-}
-
-func (x *LoginResponse) GetSuccess() *emptypb.Empty {
-	if x != nil {
-		if x, ok := x.Error.(*LoginResponse_Success); ok {
-			return x.Success
-		}
-	}
-	return nil
-}
-
-type isLoginResponse_Error interface {
-	isLoginResponse_Error()
-}
-
-type LoginResponse_ErrUnspecified struct {
-	ErrUnspecified *ErrUnspecified `protobuf:"bytes,2,opt,name=err_unspecified,json=errUnspecified,proto3,oneof"`
-}
-
-type LoginResponse_ErrInvalidCredentials struct {
-	ErrInvalidCredentials *ErrInvalidCredentials `protobuf:"bytes,3,opt,name=err_invalid_credentials,json=errInvalidCredentials,proto3,oneof"`
-}
-
-type LoginResponse_Success struct {
-	Success *emptypb.Empty `protobuf:"bytes,4,opt,name=success,proto3,oneof"`
-}
-
-func (*LoginResponse_ErrUnspecified) isLoginResponse_Error() {}
-
-func (*LoginResponse_ErrInvalidCredentials) isLoginResponse_Error() {}
-
-func (*LoginResponse_Success) isLoginResponse_Error() {}
 
 type Url struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -532,7 +258,7 @@ type Url struct {
 
 func (x *Url) Reset() {
 	*x = Url{}
-	mi := &file_auth_auth_proto_msgTypes[8]
+	mi := &file_auth_auth_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -544,7 +270,7 @@ func (x *Url) String() string {
 func (*Url) ProtoMessage() {}
 
 func (x *Url) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[8]
+	mi := &file_auth_auth_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -557,7 +283,7 @@ func (x *Url) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Url.ProtoReflect.Descriptor instead.
 func (*Url) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{8}
+	return file_auth_auth_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Url) GetUrl() string {
@@ -577,7 +303,7 @@ type Key struct {
 
 func (x *Key) Reset() {
 	*x = Key{}
-	mi := &file_auth_auth_proto_msgTypes[9]
+	mi := &file_auth_auth_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -589,7 +315,7 @@ func (x *Key) String() string {
 func (*Key) ProtoMessage() {}
 
 func (x *Key) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[9]
+	mi := &file_auth_auth_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -602,7 +328,7 @@ func (x *Key) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Key.ProtoReflect.Descriptor instead.
 func (*Key) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{9}
+	return file_auth_auth_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Key) GetOrig() string {
@@ -628,7 +354,7 @@ type SetupTOTPRequest struct {
 
 func (x *SetupTOTPRequest) Reset() {
 	*x = SetupTOTPRequest{}
-	mi := &file_auth_auth_proto_msgTypes[10]
+	mi := &file_auth_auth_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -640,7 +366,7 @@ func (x *SetupTOTPRequest) String() string {
 func (*SetupTOTPRequest) ProtoMessage() {}
 
 func (x *SetupTOTPRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[10]
+	mi := &file_auth_auth_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -653,7 +379,7 @@ func (x *SetupTOTPRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetupTOTPRequest.ProtoReflect.Descriptor instead.
 func (*SetupTOTPRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{10}
+	return file_auth_auth_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *SetupTOTPRequest) GetSessionkey() []byte {
@@ -663,15 +389,68 @@ func (x *SetupTOTPRequest) GetSessionkey() []byte {
 	return nil
 }
 
+type Res struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Key           *Key                   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Token         []byte                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Res) Reset() {
+	*x = Res{}
+	mi := &file_auth_auth_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Res) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Res) ProtoMessage() {}
+
+func (x *Res) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Res.ProtoReflect.Descriptor instead.
+func (*Res) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *Res) GetKey() *Key {
+	if x != nil {
+		return x.Key
+	}
+	return nil
+}
+
+func (x *Res) GetToken() []byte {
+	if x != nil {
+		return x.Token
+	}
+	return nil
+}
+
 type SetupTOTPResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Res           *Res                   `protobuf:"bytes,1,opt,name=res,proto3" json:"res,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SetupTOTPResponse) Reset() {
 	*x = SetupTOTPResponse{}
-	mi := &file_auth_auth_proto_msgTypes[11]
+	mi := &file_auth_auth_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -683,7 +462,7 @@ func (x *SetupTOTPResponse) String() string {
 func (*SetupTOTPResponse) ProtoMessage() {}
 
 func (x *SetupTOTPResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[11]
+	mi := &file_auth_auth_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -696,7 +475,14 @@ func (x *SetupTOTPResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetupTOTPResponse.ProtoReflect.Descriptor instead.
 func (*SetupTOTPResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{11}
+	return file_auth_auth_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *SetupTOTPResponse) GetRes() *Res {
+	if x != nil {
+		return x.Res
+	}
+	return nil
 }
 
 type ErrInvalidCode struct {
@@ -708,7 +494,7 @@ type ErrInvalidCode struct {
 
 func (x *ErrInvalidCode) Reset() {
 	*x = ErrInvalidCode{}
-	mi := &file_auth_auth_proto_msgTypes[12]
+	mi := &file_auth_auth_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -720,7 +506,7 @@ func (x *ErrInvalidCode) String() string {
 func (*ErrInvalidCode) ProtoMessage() {}
 
 func (x *ErrInvalidCode) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[12]
+	mi := &file_auth_auth_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -733,7 +519,7 @@ func (x *ErrInvalidCode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ErrInvalidCode.ProtoReflect.Descriptor instead.
 func (*ErrInvalidCode) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{12}
+	return file_auth_auth_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ErrInvalidCode) GetMesssage() string {
@@ -754,7 +540,7 @@ type SetupTOTPValidateRequest struct {
 
 func (x *SetupTOTPValidateRequest) Reset() {
 	*x = SetupTOTPValidateRequest{}
-	mi := &file_auth_auth_proto_msgTypes[13]
+	mi := &file_auth_auth_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -766,7 +552,7 @@ func (x *SetupTOTPValidateRequest) String() string {
 func (*SetupTOTPValidateRequest) ProtoMessage() {}
 
 func (x *SetupTOTPValidateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[13]
+	mi := &file_auth_auth_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -779,7 +565,7 @@ func (x *SetupTOTPValidateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetupTOTPValidateRequest.ProtoReflect.Descriptor instead.
 func (*SetupTOTPValidateRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{13}
+	return file_auth_auth_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *SetupTOTPValidateRequest) GetSessionkey() []byte {
@@ -804,20 +590,14 @@ func (x *SetupTOTPValidateRequest) GetCode() string {
 }
 
 type SetupTOTPValidateResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Types that are valid to be assigned to Error:
-	//
-	//	*SetupTOTPValidateResponse_ErrUnspecified
-	//	*SetupTOTPValidateResponse_ErrInvalidCode
-	//	*SetupTOTPValidateResponse_Success
-	Error         isSetupTOTPValidateResponse_Error `protobuf_oneof:"error"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SetupTOTPValidateResponse) Reset() {
 	*x = SetupTOTPValidateResponse{}
-	mi := &file_auth_auth_proto_msgTypes[14]
+	mi := &file_auth_auth_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -829,7 +609,7 @@ func (x *SetupTOTPValidateResponse) String() string {
 func (*SetupTOTPValidateResponse) ProtoMessage() {}
 
 func (x *SetupTOTPValidateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[14]
+	mi := &file_auth_auth_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -842,64 +622,8 @@ func (x *SetupTOTPValidateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetupTOTPValidateResponse.ProtoReflect.Descriptor instead.
 func (*SetupTOTPValidateResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{14}
+	return file_auth_auth_proto_rawDescGZIP(), []int{12}
 }
-
-func (x *SetupTOTPValidateResponse) GetError() isSetupTOTPValidateResponse_Error {
-	if x != nil {
-		return x.Error
-	}
-	return nil
-}
-
-func (x *SetupTOTPValidateResponse) GetErrUnspecified() *ErrUnspecified {
-	if x != nil {
-		if x, ok := x.Error.(*SetupTOTPValidateResponse_ErrUnspecified); ok {
-			return x.ErrUnspecified
-		}
-	}
-	return nil
-}
-
-func (x *SetupTOTPValidateResponse) GetErrInvalidCode() *ErrInvalidCode {
-	if x != nil {
-		if x, ok := x.Error.(*SetupTOTPValidateResponse_ErrInvalidCode); ok {
-			return x.ErrInvalidCode
-		}
-	}
-	return nil
-}
-
-func (x *SetupTOTPValidateResponse) GetSuccess() *emptypb.Empty {
-	if x != nil {
-		if x, ok := x.Error.(*SetupTOTPValidateResponse_Success); ok {
-			return x.Success
-		}
-	}
-	return nil
-}
-
-type isSetupTOTPValidateResponse_Error interface {
-	isSetupTOTPValidateResponse_Error()
-}
-
-type SetupTOTPValidateResponse_ErrUnspecified struct {
-	ErrUnspecified *ErrUnspecified `protobuf:"bytes,1,opt,name=err_unspecified,json=errUnspecified,proto3,oneof"`
-}
-
-type SetupTOTPValidateResponse_ErrInvalidCode struct {
-	ErrInvalidCode *ErrInvalidCode `protobuf:"bytes,2,opt,name=err_invalid_code,json=errInvalidCode,proto3,oneof"`
-}
-
-type SetupTOTPValidateResponse_Success struct {
-	Success *emptypb.Empty `protobuf:"bytes,3,opt,name=success,proto3,oneof"`
-}
-
-func (*SetupTOTPValidateResponse_ErrUnspecified) isSetupTOTPValidateResponse_Error() {}
-
-func (*SetupTOTPValidateResponse_ErrInvalidCode) isSetupTOTPValidateResponse_Error() {}
-
-func (*SetupTOTPValidateResponse_Success) isSetupTOTPValidateResponse_Error() {}
 
 type ValidateTOTPRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -911,7 +635,7 @@ type ValidateTOTPRequest struct {
 
 func (x *ValidateTOTPRequest) Reset() {
 	*x = ValidateTOTPRequest{}
-	mi := &file_auth_auth_proto_msgTypes[15]
+	mi := &file_auth_auth_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -923,7 +647,7 @@ func (x *ValidateTOTPRequest) String() string {
 func (*ValidateTOTPRequest) ProtoMessage() {}
 
 func (x *ValidateTOTPRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[15]
+	mi := &file_auth_auth_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -936,7 +660,7 @@ func (x *ValidateTOTPRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateTOTPRequest.ProtoReflect.Descriptor instead.
 func (*ValidateTOTPRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{15}
+	return file_auth_auth_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ValidateTOTPRequest) GetToken2Fa() []byte {
@@ -954,21 +678,15 @@ func (x *ValidateTOTPRequest) GetCode() string {
 }
 
 type ValidateTOTPResponse struct {
-	state      protoimpl.MessageState `protogen:"open.v1"`
-	Sessionkey []byte                 `protobuf:"bytes,1,opt,name=sessionkey,proto3" json:"sessionkey,omitempty"`
-	// Types that are valid to be assigned to Error:
-	//
-	//	*ValidateTOTPResponse_ErrUnspecified
-	//	*ValidateTOTPResponse_ErrInvalidCode
-	//	*ValidateTOTPResponse_Success
-	Error         isValidateTOTPResponse_Error `protobuf_oneof:"error"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Sessionkey    []byte                 `protobuf:"bytes,1,opt,name=sessionkey,proto3" json:"sessionkey,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ValidateTOTPResponse) Reset() {
 	*x = ValidateTOTPResponse{}
-	mi := &file_auth_auth_proto_msgTypes[16]
+	mi := &file_auth_auth_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -980,7 +698,7 @@ func (x *ValidateTOTPResponse) String() string {
 func (*ValidateTOTPResponse) ProtoMessage() {}
 
 func (x *ValidateTOTPResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[16]
+	mi := &file_auth_auth_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -993,7 +711,7 @@ func (x *ValidateTOTPResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateTOTPResponse.ProtoReflect.Descriptor instead.
 func (*ValidateTOTPResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{16}
+	return file_auth_auth_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ValidateTOTPResponse) GetSessionkey() []byte {
@@ -1002,62 +720,6 @@ func (x *ValidateTOTPResponse) GetSessionkey() []byte {
 	}
 	return nil
 }
-
-func (x *ValidateTOTPResponse) GetError() isValidateTOTPResponse_Error {
-	if x != nil {
-		return x.Error
-	}
-	return nil
-}
-
-func (x *ValidateTOTPResponse) GetErrUnspecified() *ErrUnspecified {
-	if x != nil {
-		if x, ok := x.Error.(*ValidateTOTPResponse_ErrUnspecified); ok {
-			return x.ErrUnspecified
-		}
-	}
-	return nil
-}
-
-func (x *ValidateTOTPResponse) GetErrInvalidCode() *ErrInvalidCode {
-	if x != nil {
-		if x, ok := x.Error.(*ValidateTOTPResponse_ErrInvalidCode); ok {
-			return x.ErrInvalidCode
-		}
-	}
-	return nil
-}
-
-func (x *ValidateTOTPResponse) GetSuccess() *emptypb.Empty {
-	if x != nil {
-		if x, ok := x.Error.(*ValidateTOTPResponse_Success); ok {
-			return x.Success
-		}
-	}
-	return nil
-}
-
-type isValidateTOTPResponse_Error interface {
-	isValidateTOTPResponse_Error()
-}
-
-type ValidateTOTPResponse_ErrUnspecified struct {
-	ErrUnspecified *ErrUnspecified `protobuf:"bytes,2,opt,name=err_unspecified,json=errUnspecified,proto3,oneof"`
-}
-
-type ValidateTOTPResponse_ErrInvalidCode struct {
-	ErrInvalidCode *ErrInvalidCode `protobuf:"bytes,3,opt,name=err_invalid_code,json=errInvalidCode,proto3,oneof"`
-}
-
-type ValidateTOTPResponse_Success struct {
-	Success *emptypb.Empty `protobuf:"bytes,4,opt,name=success,proto3,oneof"`
-}
-
-func (*ValidateTOTPResponse_ErrUnspecified) isValidateTOTPResponse_Error() {}
-
-func (*ValidateTOTPResponse_ErrInvalidCode) isValidateTOTPResponse_Error() {}
-
-func (*ValidateTOTPResponse_Success) isValidateTOTPResponse_Error() {}
 
 type LogoutRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1069,7 +731,7 @@ type LogoutRequest struct {
 
 func (x *LogoutRequest) Reset() {
 	*x = LogoutRequest{}
-	mi := &file_auth_auth_proto_msgTypes[17]
+	mi := &file_auth_auth_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1081,7 +743,7 @@ func (x *LogoutRequest) String() string {
 func (*LogoutRequest) ProtoMessage() {}
 
 func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[17]
+	mi := &file_auth_auth_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1094,7 +756,7 @@ func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogoutRequest.ProtoReflect.Descriptor instead.
 func (*LogoutRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{17}
+	return file_auth_auth_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *LogoutRequest) GetSessionkey() []byte {
@@ -1112,20 +774,14 @@ func (x *LogoutRequest) GetPassword() string {
 }
 
 type LogoutResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Types that are valid to be assigned to Error:
-	//
-	//	*LogoutResponse_ErrUnspecified
-	//	*LogoutResponse_ErrInvalidCredentials
-	//	*LogoutResponse_Success
-	Error         isLogoutResponse_Error `protobuf_oneof:"error"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *LogoutResponse) Reset() {
 	*x = LogoutResponse{}
-	mi := &file_auth_auth_proto_msgTypes[18]
+	mi := &file_auth_auth_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1137,7 +793,7 @@ func (x *LogoutResponse) String() string {
 func (*LogoutResponse) ProtoMessage() {}
 
 func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[18]
+	mi := &file_auth_auth_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1150,148 +806,25 @@ func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogoutResponse.ProtoReflect.Descriptor instead.
 func (*LogoutResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *LogoutResponse) GetError() isLogoutResponse_Error {
-	if x != nil {
-		return x.Error
-	}
-	return nil
-}
-
-func (x *LogoutResponse) GetErrUnspecified() *ErrUnspecified {
-	if x != nil {
-		if x, ok := x.Error.(*LogoutResponse_ErrUnspecified); ok {
-			return x.ErrUnspecified
-		}
-	}
-	return nil
-}
-
-func (x *LogoutResponse) GetErrInvalidCredentials() *ErrInvalidCredentials {
-	if x != nil {
-		if x, ok := x.Error.(*LogoutResponse_ErrInvalidCredentials); ok {
-			return x.ErrInvalidCredentials
-		}
-	}
-	return nil
-}
-
-func (x *LogoutResponse) GetSuccess() *emptypb.Empty {
-	if x != nil {
-		if x, ok := x.Error.(*LogoutResponse_Success); ok {
-			return x.Success
-		}
-	}
-	return nil
-}
-
-type isLogoutResponse_Error interface {
-	isLogoutResponse_Error()
-}
-
-type LogoutResponse_ErrUnspecified struct {
-	ErrUnspecified *ErrUnspecified `protobuf:"bytes,1,opt,name=err_unspecified,json=errUnspecified,proto3,oneof"`
-}
-
-type LogoutResponse_ErrInvalidCredentials struct {
-	ErrInvalidCredentials *ErrInvalidCredentials `protobuf:"bytes,2,opt,name=err_invalid_credentials,json=errInvalidCredentials,proto3,oneof"`
-}
-
-type LogoutResponse_Success struct {
-	Success *emptypb.Empty `protobuf:"bytes,3,opt,name=success,proto3,oneof"`
-}
-
-func (*LogoutResponse_ErrUnspecified) isLogoutResponse_Error() {}
-
-func (*LogoutResponse_ErrInvalidCredentials) isLogoutResponse_Error() {}
-
-func (*LogoutResponse_Success) isLogoutResponse_Error() {}
-
-type SetupTOTPResponse_Res struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Key           *Key                   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	Token         []byte                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SetupTOTPResponse_Res) Reset() {
-	*x = SetupTOTPResponse_Res{}
-	mi := &file_auth_auth_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SetupTOTPResponse_Res) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SetupTOTPResponse_Res) ProtoMessage() {}
-
-func (x *SetupTOTPResponse_Res) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SetupTOTPResponse_Res.ProtoReflect.Descriptor instead.
-func (*SetupTOTPResponse_Res) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{11, 0}
-}
-
-func (x *SetupTOTPResponse_Res) GetKey() *Key {
-	if x != nil {
-		return x.Key
-	}
-	return nil
-}
-
-func (x *SetupTOTPResponse_Res) GetToken() []byte {
-	if x != nil {
-		return x.Token
-	}
-	return nil
+	return file_auth_auth_proto_rawDescGZIP(), []int{16}
 }
 
 var File_auth_auth_proto protoreflect.FileDescriptor
 
 const file_auth_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x0fauth/auth.proto\x12\x04auth\x1a\x1bgoogle/protobuf/empty.proto\",\n" +
-	"\x10ErrUsernameTaken\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\"0\n" +
-	"\x14ErrAlreadyRegistered\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\"*\n" +
-	"\x0eErrUnspecified\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\"C\n" +
+	"\x0fauth/auth.proto\x12\x04auth\"C\n" +
 	"\x0fRegisterRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"\xaa\x02\n" +
-	"\x10RegisterResponse\x12R\n" +
-	"\x16err_already_registered\x18\x01 \x01(\v2\x1a.auth.ErrAlreadyRegisteredH\x00R\x14errAlreadyRegistered\x12F\n" +
-	"\x12err_username_taken\x18\x02 \x01(\v2\x16.auth.ErrUsernameTakenH\x00R\x10errUsernameTaken\x12?\n" +
-	"\x0ferr_unspecified\x18\x03 \x01(\v2\x14.auth.ErrUnspecifiedH\x00R\x0eerrUnspecified\x122\n" +
-	"\asuccess\x18\x04 \x01(\v2\x16.google.protobuf.EmptyH\x00R\asuccessB\x05\n" +
-	"\x03res\"@\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"\x12\n" +
+	"\x10RegisterResponse\"@\n" +
 	"\fLoginRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"1\n" +
 	"\x15ErrInvalidCredentials\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\"\xfa\x01\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\"%\n" +
 	"\rLoginResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\fR\x05token\x12?\n" +
-	"\x0ferr_unspecified\x18\x02 \x01(\v2\x14.auth.ErrUnspecifiedH\x00R\x0eerrUnspecified\x12U\n" +
-	"\x17err_invalid_credentials\x18\x03 \x01(\v2\x1b.auth.ErrInvalidCredentialsH\x00R\x15errInvalidCredentials\x122\n" +
-	"\asuccess\x18\x04 \x01(\v2\x16.google.protobuf.EmptyH\x00R\asuccessB\a\n" +
-	"\x05error\"\x17\n" +
+	"\x05token\x18\x01 \x01(\fR\x05token\"\x17\n" +
 	"\x03Url\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\"6\n" +
 	"\x03Key\x12\x12\n" +
@@ -1300,11 +833,12 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x10SetupTOTPRequest\x12\x1e\n" +
 	"\n" +
 	"sessionkey\x18\x01 \x01(\fR\n" +
-	"sessionkey\"M\n" +
-	"\x11SetupTOTPResponse\x1a8\n" +
+	"sessionkey\"8\n" +
 	"\x03Res\x12\x1b\n" +
 	"\x03key\x18\x01 \x01(\v2\t.auth.KeyR\x03key\x12\x14\n" +
-	"\x05token\x18\x02 \x01(\fR\x05token\",\n" +
+	"\x05token\x18\x02 \x01(\fR\x05token\"0\n" +
+	"\x11SetupTOTPResponse\x12\x1b\n" +
+	"\x03res\x18\x01 \x01(\v2\t.auth.ResR\x03res\",\n" +
 	"\x0eErrInvalidCode\x12\x1a\n" +
 	"\bmesssage\x18\x01 \x01(\tR\bmesssage\"j\n" +
 	"\x18SetupTOTPValidateRequest\x12\x1e\n" +
@@ -1312,33 +846,21 @@ const file_auth_auth_proto_rawDesc = "" +
 	"sessionkey\x18\x01 \x01(\fR\n" +
 	"sessionkey\x12\x1a\n" +
 	"\bsetup2fa\x18\x02 \x01(\fR\bsetup2fa\x12\x12\n" +
-	"\x04code\x18\x03 \x01(\tR\x04code\"\xdb\x01\n" +
-	"\x19SetupTOTPValidateResponse\x12?\n" +
-	"\x0ferr_unspecified\x18\x01 \x01(\v2\x14.auth.ErrUnspecifiedH\x00R\x0eerrUnspecified\x12@\n" +
-	"\x10err_invalid_code\x18\x02 \x01(\v2\x14.auth.ErrInvalidCodeH\x00R\x0eerrInvalidCode\x122\n" +
-	"\asuccess\x18\x03 \x01(\v2\x16.google.protobuf.EmptyH\x00R\asuccessB\a\n" +
-	"\x05error\"E\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\"\x1b\n" +
+	"\x19SetupTOTPValidateResponse\"E\n" +
 	"\x13ValidateTOTPRequest\x12\x1a\n" +
 	"\btoken2fa\x18\x01 \x01(\fR\btoken2fa\x12\x12\n" +
-	"\x04code\x18\x02 \x01(\tR\x04code\"\xf6\x01\n" +
+	"\x04code\x18\x02 \x01(\tR\x04code\"6\n" +
 	"\x14ValidateTOTPResponse\x12\x1e\n" +
 	"\n" +
 	"sessionkey\x18\x01 \x01(\fR\n" +
-	"sessionkey\x12?\n" +
-	"\x0ferr_unspecified\x18\x02 \x01(\v2\x14.auth.ErrUnspecifiedH\x00R\x0eerrUnspecified\x12@\n" +
-	"\x10err_invalid_code\x18\x03 \x01(\v2\x14.auth.ErrInvalidCodeH\x00R\x0eerrInvalidCode\x122\n" +
-	"\asuccess\x18\x04 \x01(\v2\x16.google.protobuf.EmptyH\x00R\asuccessB\a\n" +
-	"\x05error\"K\n" +
+	"sessionkey\"K\n" +
 	"\rLogoutRequest\x12\x1e\n" +
 	"\n" +
 	"sessionkey\x18\x01 \x01(\fR\n" +
 	"sessionkey\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"\xe5\x01\n" +
-	"\x0eLogoutResponse\x12?\n" +
-	"\x0ferr_unspecified\x18\x01 \x01(\v2\x14.auth.ErrUnspecifiedH\x00R\x0eerrUnspecified\x12U\n" +
-	"\x17err_invalid_credentials\x18\x02 \x01(\v2\x1b.auth.ErrInvalidCredentialsH\x00R\x15errInvalidCredentials\x122\n" +
-	"\asuccess\x18\x03 \x01(\v2\x16.google.protobuf.EmptyH\x00R\asuccessB\a\n" +
-	"\x05error2\x83\x03\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"\x10\n" +
+	"\x0eLogoutResponse2\x83\x03\n" +
 	"\x04Auth\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x12<\n" +
@@ -1359,66 +881,47 @@ func file_auth_auth_proto_rawDescGZIP() []byte {
 	return file_auth_auth_proto_rawDescData
 }
 
-var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_auth_auth_proto_goTypes = []any{
-	(*ErrUsernameTaken)(nil),          // 0: auth.ErrUsernameTaken
-	(*ErrAlreadyRegistered)(nil),      // 1: auth.ErrAlreadyRegistered
-	(*ErrUnspecified)(nil),            // 2: auth.ErrUnspecified
-	(*RegisterRequest)(nil),           // 3: auth.RegisterRequest
-	(*RegisterResponse)(nil),          // 4: auth.RegisterResponse
-	(*LoginRequest)(nil),              // 5: auth.LoginRequest
-	(*ErrInvalidCredentials)(nil),     // 6: auth.ErrInvalidCredentials
-	(*LoginResponse)(nil),             // 7: auth.LoginResponse
-	(*Url)(nil),                       // 8: auth.Url
-	(*Key)(nil),                       // 9: auth.Key
-	(*SetupTOTPRequest)(nil),          // 10: auth.SetupTOTPRequest
-	(*SetupTOTPResponse)(nil),         // 11: auth.SetupTOTPResponse
-	(*ErrInvalidCode)(nil),            // 12: auth.ErrInvalidCode
-	(*SetupTOTPValidateRequest)(nil),  // 13: auth.SetupTOTPValidateRequest
-	(*SetupTOTPValidateResponse)(nil), // 14: auth.SetupTOTPValidateResponse
-	(*ValidateTOTPRequest)(nil),       // 15: auth.ValidateTOTPRequest
-	(*ValidateTOTPResponse)(nil),      // 16: auth.ValidateTOTPResponse
-	(*LogoutRequest)(nil),             // 17: auth.LogoutRequest
-	(*LogoutResponse)(nil),            // 18: auth.LogoutResponse
-	(*SetupTOTPResponse_Res)(nil),     // 19: auth.SetupTOTPResponse.Res
-	(*emptypb.Empty)(nil),             // 20: google.protobuf.Empty
+	(*RegisterRequest)(nil),           // 0: auth.RegisterRequest
+	(*RegisterResponse)(nil),          // 1: auth.RegisterResponse
+	(*LoginRequest)(nil),              // 2: auth.LoginRequest
+	(*ErrInvalidCredentials)(nil),     // 3: auth.ErrInvalidCredentials
+	(*LoginResponse)(nil),             // 4: auth.LoginResponse
+	(*Url)(nil),                       // 5: auth.Url
+	(*Key)(nil),                       // 6: auth.Key
+	(*SetupTOTPRequest)(nil),          // 7: auth.SetupTOTPRequest
+	(*Res)(nil),                       // 8: auth.Res
+	(*SetupTOTPResponse)(nil),         // 9: auth.SetupTOTPResponse
+	(*ErrInvalidCode)(nil),            // 10: auth.ErrInvalidCode
+	(*SetupTOTPValidateRequest)(nil),  // 11: auth.SetupTOTPValidateRequest
+	(*SetupTOTPValidateResponse)(nil), // 12: auth.SetupTOTPValidateResponse
+	(*ValidateTOTPRequest)(nil),       // 13: auth.ValidateTOTPRequest
+	(*ValidateTOTPResponse)(nil),      // 14: auth.ValidateTOTPResponse
+	(*LogoutRequest)(nil),             // 15: auth.LogoutRequest
+	(*LogoutResponse)(nil),            // 16: auth.LogoutResponse
 }
 var file_auth_auth_proto_depIdxs = []int32{
-	1,  // 0: auth.RegisterResponse.err_already_registered:type_name -> auth.ErrAlreadyRegistered
-	0,  // 1: auth.RegisterResponse.err_username_taken:type_name -> auth.ErrUsernameTaken
-	2,  // 2: auth.RegisterResponse.err_unspecified:type_name -> auth.ErrUnspecified
-	20, // 3: auth.RegisterResponse.success:type_name -> google.protobuf.Empty
-	2,  // 4: auth.LoginResponse.err_unspecified:type_name -> auth.ErrUnspecified
-	6,  // 5: auth.LoginResponse.err_invalid_credentials:type_name -> auth.ErrInvalidCredentials
-	20, // 6: auth.LoginResponse.success:type_name -> google.protobuf.Empty
-	8,  // 7: auth.Key.url:type_name -> auth.Url
-	2,  // 8: auth.SetupTOTPValidateResponse.err_unspecified:type_name -> auth.ErrUnspecified
-	12, // 9: auth.SetupTOTPValidateResponse.err_invalid_code:type_name -> auth.ErrInvalidCode
-	20, // 10: auth.SetupTOTPValidateResponse.success:type_name -> google.protobuf.Empty
-	2,  // 11: auth.ValidateTOTPResponse.err_unspecified:type_name -> auth.ErrUnspecified
-	12, // 12: auth.ValidateTOTPResponse.err_invalid_code:type_name -> auth.ErrInvalidCode
-	20, // 13: auth.ValidateTOTPResponse.success:type_name -> google.protobuf.Empty
-	2,  // 14: auth.LogoutResponse.err_unspecified:type_name -> auth.ErrUnspecified
-	6,  // 15: auth.LogoutResponse.err_invalid_credentials:type_name -> auth.ErrInvalidCredentials
-	20, // 16: auth.LogoutResponse.success:type_name -> google.protobuf.Empty
-	9,  // 17: auth.SetupTOTPResponse.Res.key:type_name -> auth.Key
-	3,  // 18: auth.Auth.Register:input_type -> auth.RegisterRequest
-	5,  // 19: auth.Auth.Login:input_type -> auth.LoginRequest
-	10, // 20: auth.Auth.SetupTOTP:input_type -> auth.SetupTOTPRequest
-	13, // 21: auth.Auth.SetupTOTPValidate:input_type -> auth.SetupTOTPValidateRequest
-	15, // 22: auth.Auth.ValidateTOTP:input_type -> auth.ValidateTOTPRequest
-	17, // 23: auth.Auth.Logout:input_type -> auth.LogoutRequest
-	4,  // 24: auth.Auth.Register:output_type -> auth.RegisterResponse
-	7,  // 25: auth.Auth.Login:output_type -> auth.LoginResponse
-	11, // 26: auth.Auth.SetupTOTP:output_type -> auth.SetupTOTPResponse
-	14, // 27: auth.Auth.SetupTOTPValidate:output_type -> auth.SetupTOTPValidateResponse
-	16, // 28: auth.Auth.ValidateTOTP:output_type -> auth.ValidateTOTPResponse
-	18, // 29: auth.Auth.Logout:output_type -> auth.LogoutResponse
-	24, // [24:30] is the sub-list for method output_type
-	18, // [18:24] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	5,  // 0: auth.Key.url:type_name -> auth.Url
+	6,  // 1: auth.Res.key:type_name -> auth.Key
+	8,  // 2: auth.SetupTOTPResponse.res:type_name -> auth.Res
+	0,  // 3: auth.Auth.Register:input_type -> auth.RegisterRequest
+	2,  // 4: auth.Auth.Login:input_type -> auth.LoginRequest
+	7,  // 5: auth.Auth.SetupTOTP:input_type -> auth.SetupTOTPRequest
+	11, // 6: auth.Auth.SetupTOTPValidate:input_type -> auth.SetupTOTPValidateRequest
+	13, // 7: auth.Auth.ValidateTOTP:input_type -> auth.ValidateTOTPRequest
+	15, // 8: auth.Auth.Logout:input_type -> auth.LogoutRequest
+	1,  // 9: auth.Auth.Register:output_type -> auth.RegisterResponse
+	4,  // 10: auth.Auth.Login:output_type -> auth.LoginResponse
+	9,  // 11: auth.Auth.SetupTOTP:output_type -> auth.SetupTOTPResponse
+	12, // 12: auth.Auth.SetupTOTPValidate:output_type -> auth.SetupTOTPValidateResponse
+	14, // 13: auth.Auth.ValidateTOTP:output_type -> auth.ValidateTOTPResponse
+	16, // 14: auth.Auth.Logout:output_type -> auth.LogoutResponse
+	9,  // [9:15] is the sub-list for method output_type
+	3,  // [3:9] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_auth_auth_proto_init() }
@@ -1426,39 +929,13 @@ func file_auth_auth_proto_init() {
 	if File_auth_auth_proto != nil {
 		return
 	}
-	file_auth_auth_proto_msgTypes[4].OneofWrappers = []any{
-		(*RegisterResponse_ErrAlreadyRegistered)(nil),
-		(*RegisterResponse_ErrUsernameTaken)(nil),
-		(*RegisterResponse_ErrUnspecified)(nil),
-		(*RegisterResponse_Success)(nil),
-	}
-	file_auth_auth_proto_msgTypes[7].OneofWrappers = []any{
-		(*LoginResponse_ErrUnspecified)(nil),
-		(*LoginResponse_ErrInvalidCredentials)(nil),
-		(*LoginResponse_Success)(nil),
-	}
-	file_auth_auth_proto_msgTypes[14].OneofWrappers = []any{
-		(*SetupTOTPValidateResponse_ErrUnspecified)(nil),
-		(*SetupTOTPValidateResponse_ErrInvalidCode)(nil),
-		(*SetupTOTPValidateResponse_Success)(nil),
-	}
-	file_auth_auth_proto_msgTypes[16].OneofWrappers = []any{
-		(*ValidateTOTPResponse_ErrUnspecified)(nil),
-		(*ValidateTOTPResponse_ErrInvalidCode)(nil),
-		(*ValidateTOTPResponse_Success)(nil),
-	}
-	file_auth_auth_proto_msgTypes[18].OneofWrappers = []any{
-		(*LogoutResponse_ErrUnspecified)(nil),
-		(*LogoutResponse_ErrInvalidCredentials)(nil),
-		(*LogoutResponse_Success)(nil),
-	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_auth_proto_rawDesc), len(file_auth_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
