@@ -3,119 +3,140 @@ syntax = "proto3";
 package auth;
 option go_package = "github.com/go-chat-devs/proto-auth-x-gateway/gen/go/auth;authv1";
 
-//lklfd
+// Auth сервис предоставляет методы для аутентификации и управления аккаунтом
+// Auth service provides methods for authentication and account management
 service Auth {
-  //
+  // Register регистрирует нового пользователя
+  // Registers a new user
   rpc Register(RegisterRequest) returns (RegisterResponse);
-  //
+  
+  // Login выполняет вход пользователя
+  // Authenticates a user
   rpc Login(LoginRequest) returns (LoginResponse);
-  //
-  //
+  
+  // SetupTOTP начинает настройку двухфакторной аутентификации (TOTP)
+  // Initiates TOTP two-factor authentication setup
   rpc SetupTOTP(SetupTOTPRequest) returns (SetupTOTPResponse);
-  //
+  
+  // SetupTOTPValidate завершает настройку TOTP, проверяя код
+  // Completes TOTP setup by validating the code
   rpc SetupTOTPValidate(SetupTOTPValidateRequest) returns (SetupTOTPValidateResponse);
-  //
+  
+  // ValidateTOTP проверяет TOTP код при входе с включенной 2FA
+  // Validates TOTP code during login when 2FA is enabled
   rpc ValidateTOTP(ValidateTOTPRequest) returns (ValidateTOTPResponse);
-  //
+  
+  // Logout удаляет аккаунт пользователя (требуется подтверждение паролем)
+  // Deletes user account (requires password confirmation)
   rpc Logout(LogoutRequest) returns (LogoutResponse);
-
 }
 
-
-//----------------------------------------------
-
+// RegisterRequest запрос на регистрацию
+// RegisterRequest registration request
 message RegisterRequest {
-  string email = 1;
-  string password = 2;
-  
+  string email = 1;      // Email пользователя / User's email
+  string password = 2;   // Пароль / Password
 }
 
-
+// RegisterResponse ответ на регистрацию
+// RegisterResponse registration response
 message RegisterResponse {
+  // Пустой ответ / Empty response
 }
-//-----------------------------------------------------
 
+// LoginRequest запрос на вход
+// LoginRequest login request
 message LoginRequest {
-  string email = 1;
-  string password = 2;
+  string email = 1;      // Email пользователя / User's email
+  string password = 2;   // Пароль / Password
 }
 
-
+// ErrInvalidCredentials ошибка неверных учетных данных
+// ErrInvalidCredentials invalid credentials error
 message ErrInvalidCredentials {
-  string message = 1;
+  string message = 1;    // Сообщение об ошибке / Error message
 }
 
+// LoginResponse ответ на вход
+// LoginResponse login response
 message LoginResponse {
-  bytes token = 1;
+  bytes token = 1;       // Токен сессии или временный токен для 2FA / Session token or temporary 2FA token
 }
-//---------------------------
 
-
+// Url содержит URL для QR-кода
+// Url contains URL for QR code
 message Url {
-  string url = 1;
-  
-}
-message Key{
-  string orig = 1;
-  Url url = 2;
+  string url = 1;        // otpauth:// URL для настройки TOTP / otpauth:// URL for TOTP setup
 }
 
+// Key содержит информацию о TOTP ключе
+// Key contains TOTP key information
+message Key {
+  string orig = 1;       // Строковое представление ключа / String representation of the key
+  Url url = 2;           // URL для QR-кода / URL for QR code
+}
 
-
+// SetupTOTPRequest запрос на настройку TOTP
+// SetupTOTPRequest TOTP setup request
 message SetupTOTPRequest {
-  bytes sessionkey = 1;
+  bytes sessionkey = 1;  // Ключ сессии / Session key
 }
 
+// Res содержит результат настройки TOTP
+// Res contains TOTP setup result
 message Res {
-  Key key = 1;
-  bytes token = 2;
+  Key key = 1;           // Информация о TOTP ключе / TOTP key information
+  bytes token = 2;       // Временный токен для подтверждения / Temporary token for confirmation
 }
 
+// SetupTOTPResponse ответ на настройку TOTP
+// SetupTOTPResponse TOTP setup response
 message SetupTOTPResponse {
-  Res res = 1;
+  Res res = 1;           // Результат настройки / Setup result
 }
 
-
-
-//-----------------------
-
-
+// ErrInvalidCode ошибка неверного кода
+// ErrInvalidCode invalid code error
 message ErrInvalidCode {
-  string messsage =1;
+  string messsage = 1;   // Сообщение об ошибке / Error message
 }
 
+// SetupTOTPValidateRequest запрос на подтверждение TOTP
+// SetupTOTPValidateRequest TOTP validation request
 message SetupTOTPValidateRequest {
-  bytes sessionkey = 1;
-  bytes setup2fa = 2;
-  string code = 3;
+  bytes sessionkey = 1;  // Ключ сессии / Session key
+  bytes setup2fa = 2;    // Токен настройки из SetupTOTPResponse / Setup token from SetupTOTPResponse
+  string code = 3;       // 6-значный код из аутентификатора / 6-digit code from authenticator
 }
 
-
+// SetupTOTPValidateResponse ответ на подтверждение TOTP
+// SetupTOTPValidateResponse TOTP validation response
 message SetupTOTPValidateResponse {
-}
-//-----------------------
-
-
-message ValidateTOTPRequest{
-  bytes token2fa = 1;
-  string code = 2;
+  // Пустой ответ / Empty response
 }
 
+// ValidateTOTPRequest запрос на проверку TOTP при входе
+// ValidateTOTPRequest TOTP validation during login request
+message ValidateTOTPRequest {
+  bytes token2fa = 1;    // Временный токен из LoginResponse / Temporary token from LoginResponse
+  string code = 2;       // 6-значный код из аутентификатора / 6-digit code from authenticator
+}
 
+// ValidateTOTPResponse ответ на проверку TOTP при входе
+// ValidateTOTPResponse TOTP validation during login response
 message ValidateTOTPResponse {
-  bytes sessionkey = 1;
+  bytes sessionkey = 1;  // Ключ сессии при успешной проверке / Session key on successful validation
 }
 
-
-
-
-
-//-----------------------------
-
+// LogoutRequest запрос на удаление аккаунта
+// LogoutRequest account deletion request
 message LogoutRequest {
-  bytes sessionkey = 1;
-  string password = 2;
+  bytes sessionkey = 1;  // Ключ сессии / Session key
+  string password = 2;   // Пароль для подтверждения / Password for confirmation
 }
 
-message LogoutResponse {}
-
+// LogoutResponse ответ на удаление аккаунта
+// LogoutResponse account deletion response
+message LogoutResponse {
+  // Пустой ответ / Empty response
+}

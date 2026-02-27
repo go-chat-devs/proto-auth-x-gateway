@@ -31,13 +31,26 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 //
-// lklfd
+// Auth сервис предоставляет методы для аутентификации и управления аккаунтом
+// Auth service provides methods for authentication and account management
 type AuthClient interface {
+	// Register регистрирует нового пользователя
+	// Registers a new user
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
+	// Login выполняет вход пользователя
+	// Authenticates a user
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+	// SetupTOTP начинает настройку двухфакторной аутентификации (TOTP)
+	// Initiates TOTP two-factor authentication setup
 	SetupTOTP(ctx context.Context, in *SetupTOTPRequest, opts ...grpc.CallOption) (*SetupTOTPResponse, error)
+	// SetupTOTPValidate завершает настройку TOTP, проверяя код
+	// Completes TOTP setup by validating the code
 	SetupTOTPValidate(ctx context.Context, in *SetupTOTPValidateRequest, opts ...grpc.CallOption) (*SetupTOTPValidateResponse, error)
+	// ValidateTOTP проверяет TOTP код при входе с включенной 2FA
+	// Validates TOTP code during login when 2FA is enabled
 	ValidateTOTP(ctx context.Context, in *ValidateTOTPRequest, opts ...grpc.CallOption) (*ValidateTOTPResponse, error)
+	// Logout удаляет аккаунт пользователя (требуется подтверждение паролем)
+	// Deletes user account (requires password confirmation)
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 }
 
@@ -113,13 +126,26 @@ func (c *authClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc
 // All implementations must embed UnimplementedAuthServer
 // for forward compatibility.
 //
-// lklfd
+// Auth сервис предоставляет методы для аутентификации и управления аккаунтом
+// Auth service provides methods for authentication and account management
 type AuthServer interface {
+	// Register регистрирует нового пользователя
+	// Registers a new user
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
+	// Login выполняет вход пользователя
+	// Authenticates a user
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
+	// SetupTOTP начинает настройку двухфакторной аутентификации (TOTP)
+	// Initiates TOTP two-factor authentication setup
 	SetupTOTP(context.Context, *SetupTOTPRequest) (*SetupTOTPResponse, error)
+	// SetupTOTPValidate завершает настройку TOTP, проверяя код
+	// Completes TOTP setup by validating the code
 	SetupTOTPValidate(context.Context, *SetupTOTPValidateRequest) (*SetupTOTPValidateResponse, error)
+	// ValidateTOTP проверяет TOTP код при входе с включенной 2FA
+	// Validates TOTP code during login when 2FA is enabled
 	ValidateTOTP(context.Context, *ValidateTOTPRequest) (*ValidateTOTPResponse, error)
+	// Logout удаляет аккаунт пользователя (требуется подтверждение паролем)
+	// Deletes user account (requires password confirmation)
 	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	mustEmbedUnimplementedAuthServer()
 }

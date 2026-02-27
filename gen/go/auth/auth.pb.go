@@ -21,10 +21,12 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// RegisterRequest запрос на регистрацию
+// RegisterRequest registration request
 type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`       // Email пользователя / User's email
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"` // Пароль / Password
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -73,6 +75,8 @@ func (x *RegisterRequest) GetPassword() string {
 	return ""
 }
 
+// RegisterResponse ответ на регистрацию
+// RegisterResponse registration response
 type RegisterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -109,10 +113,12 @@ func (*RegisterResponse) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{1}
 }
 
+// LoginRequest запрос на вход
+// LoginRequest login request
 type LoginRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`       // Email пользователя / User's email
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"` // Пароль / Password
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -161,9 +167,11 @@ func (x *LoginRequest) GetPassword() string {
 	return ""
 }
 
+// ErrInvalidCredentials ошибка неверных учетных данных
+// ErrInvalidCredentials invalid credentials error
 type ErrInvalidCredentials struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"` // Сообщение об ошибке / Error message
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -205,9 +213,11 @@ func (x *ErrInvalidCredentials) GetMessage() string {
 	return ""
 }
 
+// LoginResponse ответ на вход
+// LoginResponse login response
 type LoginResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         []byte                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	Token         []byte                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"` // Токен сессии или временный токен для 2FA / Session token or temporary 2FA token
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -249,9 +259,11 @@ func (x *LoginResponse) GetToken() []byte {
 	return nil
 }
 
+// Url содержит URL для QR-кода
+// Url contains URL for QR code
 type Url struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Url           string                 `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	Url           string                 `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"` // otpauth:// URL для настройки TOTP / otpauth:// URL for TOTP setup
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -293,10 +305,12 @@ func (x *Url) GetUrl() string {
 	return ""
 }
 
+// Key содержит информацию о TOTP ключе
+// Key contains TOTP key information
 type Key struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Orig          string                 `protobuf:"bytes,1,opt,name=orig,proto3" json:"orig,omitempty"`
-	Url           *Url                   `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
+	Orig          string                 `protobuf:"bytes,1,opt,name=orig,proto3" json:"orig,omitempty"` // Строковое представление ключа / String representation of the key
+	Url           *Url                   `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`   // URL для QR-кода / URL for QR code
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -345,9 +359,11 @@ func (x *Key) GetUrl() *Url {
 	return nil
 }
 
+// SetupTOTPRequest запрос на настройку TOTP
+// SetupTOTPRequest TOTP setup request
 type SetupTOTPRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Sessionkey    []byte                 `protobuf:"bytes,1,opt,name=sessionkey,proto3" json:"sessionkey,omitempty"`
+	Sessionkey    []byte                 `protobuf:"bytes,1,opt,name=sessionkey,proto3" json:"sessionkey,omitempty"` // Ключ сессии / Session key
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -389,10 +405,12 @@ func (x *SetupTOTPRequest) GetSessionkey() []byte {
 	return nil
 }
 
+// Res содержит результат настройки TOTP
+// Res contains TOTP setup result
 type Res struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Key           *Key                   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	Token         []byte                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
+	Key           *Key                   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`     // Информация о TOTP ключе / TOTP key information
+	Token         []byte                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"` // Временный токен для подтверждения / Temporary token for confirmation
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -441,9 +459,11 @@ func (x *Res) GetToken() []byte {
 	return nil
 }
 
+// SetupTOTPResponse ответ на настройку TOTP
+// SetupTOTPResponse TOTP setup response
 type SetupTOTPResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Res           *Res                   `protobuf:"bytes,1,opt,name=res,proto3" json:"res,omitempty"`
+	Res           *Res                   `protobuf:"bytes,1,opt,name=res,proto3" json:"res,omitempty"` // Результат настройки / Setup result
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -485,9 +505,11 @@ func (x *SetupTOTPResponse) GetRes() *Res {
 	return nil
 }
 
+// ErrInvalidCode ошибка неверного кода
+// ErrInvalidCode invalid code error
 type ErrInvalidCode struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Messsage      string                 `protobuf:"bytes,1,opt,name=messsage,proto3" json:"messsage,omitempty"`
+	Messsage      string                 `protobuf:"bytes,1,opt,name=messsage,proto3" json:"messsage,omitempty"` // Сообщение об ошибке / Error message
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -529,11 +551,13 @@ func (x *ErrInvalidCode) GetMesssage() string {
 	return ""
 }
 
+// SetupTOTPValidateRequest запрос на подтверждение TOTP
+// SetupTOTPValidateRequest TOTP validation request
 type SetupTOTPValidateRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Sessionkey    []byte                 `protobuf:"bytes,1,opt,name=sessionkey,proto3" json:"sessionkey,omitempty"`
-	Setup2Fa      []byte                 `protobuf:"bytes,2,opt,name=setup2fa,proto3" json:"setup2fa,omitempty"`
-	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	Sessionkey    []byte                 `protobuf:"bytes,1,opt,name=sessionkey,proto3" json:"sessionkey,omitempty"` // Ключ сессии / Session key
+	Setup2Fa      []byte                 `protobuf:"bytes,2,opt,name=setup2fa,proto3" json:"setup2fa,omitempty"`     // Токен настройки из SetupTOTPResponse / Setup token from SetupTOTPResponse
+	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`             // 6-значный код из аутентификатора / 6-digit code from authenticator
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -589,6 +613,8 @@ func (x *SetupTOTPValidateRequest) GetCode() string {
 	return ""
 }
 
+// SetupTOTPValidateResponse ответ на подтверждение TOTP
+// SetupTOTPValidateResponse TOTP validation response
 type SetupTOTPValidateResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -625,10 +651,12 @@ func (*SetupTOTPValidateResponse) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{12}
 }
 
+// ValidateTOTPRequest запрос на проверку TOTP при входе
+// ValidateTOTPRequest TOTP validation during login request
 type ValidateTOTPRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token2Fa      []byte                 `protobuf:"bytes,1,opt,name=token2fa,proto3" json:"token2fa,omitempty"`
-	Code          string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
+	Token2Fa      []byte                 `protobuf:"bytes,1,opt,name=token2fa,proto3" json:"token2fa,omitempty"` // Временный токен из LoginResponse / Temporary token from LoginResponse
+	Code          string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`         // 6-значный код из аутентификатора / 6-digit code from authenticator
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -677,9 +705,11 @@ func (x *ValidateTOTPRequest) GetCode() string {
 	return ""
 }
 
+// ValidateTOTPResponse ответ на проверку TOTP при входе
+// ValidateTOTPResponse TOTP validation during login response
 type ValidateTOTPResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Sessionkey    []byte                 `protobuf:"bytes,1,opt,name=sessionkey,proto3" json:"sessionkey,omitempty"`
+	Sessionkey    []byte                 `protobuf:"bytes,1,opt,name=sessionkey,proto3" json:"sessionkey,omitempty"` // Ключ сессии при успешной проверке / Session key on successful validation
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -721,10 +751,12 @@ func (x *ValidateTOTPResponse) GetSessionkey() []byte {
 	return nil
 }
 
+// LogoutRequest запрос на удаление аккаунта
+// LogoutRequest account deletion request
 type LogoutRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Sessionkey    []byte                 `protobuf:"bytes,1,opt,name=sessionkey,proto3" json:"sessionkey,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	Sessionkey    []byte                 `protobuf:"bytes,1,opt,name=sessionkey,proto3" json:"sessionkey,omitempty"` // Ключ сессии / Session key
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`     // Пароль для подтверждения / Password for confirmation
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -773,6 +805,8 @@ func (x *LogoutRequest) GetPassword() string {
 	return ""
 }
 
+// LogoutResponse ответ на удаление аккаунта
+// LogoutResponse account deletion response
 type LogoutResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
