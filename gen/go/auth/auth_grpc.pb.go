@@ -25,6 +25,7 @@ const (
 	Auth_SetupTOTPValidate_FullMethodName = "/auth.Auth/SetupTOTPValidate"
 	Auth_ValidateTOTP_FullMethodName      = "/auth.Auth/ValidateTOTP"
 	Auth_Logout_FullMethodName            = "/auth.Auth/Logout"
+	Auth_DeleteAccount_FullMethodName     = "/auth.Auth/DeleteAccount"
 )
 
 // AuthClient is the client API for Auth service.
@@ -49,9 +50,12 @@ type AuthClient interface {
 	// ValidateTOTP проверяет TOTP код при входе с включенной 2FA
 	// Validates TOTP code during login when 2FA is enabled
 	ValidateTOTP(ctx context.Context, in *ValidateTOTPRequest, opts ...grpc.CallOption) (*ValidateTOTPResponse, error)
-	// Logout удаляет аккаунт пользователя (требуется подтверждение паролем)
-	// Deletes user account (requires password confirmation)
+	// Logout удаляет сессию пользователя
+	// Deletes user session
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
+	// DeleteAccount удаляет аккаунт пользователя (требуется подтверждение паролем)
+	// Deletes user account (requires password confirmation)
+	DeleteAccount(ctx context.Context, in *DeleteAccountRequest, opts ...grpc.CallOption) (*DeleteAccountResponse, error)
 }
 
 type authClient struct {
@@ -122,6 +126,16 @@ func (c *authClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc
 	return out, nil
 }
 
+func (c *authClient) DeleteAccount(ctx context.Context, in *DeleteAccountRequest, opts ...grpc.CallOption) (*DeleteAccountResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteAccountResponse)
+	err := c.cc.Invoke(ctx, Auth_DeleteAccount_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServer is the server API for Auth service.
 // All implementations must embed UnimplementedAuthServer
 // for forward compatibility.
@@ -144,9 +158,12 @@ type AuthServer interface {
 	// ValidateTOTP проверяет TOTP код при входе с включенной 2FA
 	// Validates TOTP code during login when 2FA is enabled
 	ValidateTOTP(context.Context, *ValidateTOTPRequest) (*ValidateTOTPResponse, error)
-	// Logout удаляет аккаунт пользователя (требуется подтверждение паролем)
-	// Deletes user account (requires password confirmation)
+	// Logout удаляет сессию пользователя
+	// Deletes user session
 	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
+	// DeleteAccount удаляет аккаунт пользователя (требуется подтверждение паролем)
+	// Deletes user account (requires password confirmation)
+	DeleteAccount(context.Context, *DeleteAccountRequest) (*DeleteAccountResponse, error)
 	mustEmbedUnimplementedAuthServer()
 }
 
@@ -174,6 +191,9 @@ func (UnimplementedAuthServer) ValidateTOTP(context.Context, *ValidateTOTPReques
 }
 func (UnimplementedAuthServer) Logout(context.Context, *LogoutRequest) (*LogoutResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Logout not implemented")
+}
+func (UnimplementedAuthServer) DeleteAccount(context.Context, *DeleteAccountRequest) (*DeleteAccountResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeleteAccount not implemented")
 }
 func (UnimplementedAuthServer) mustEmbedUnimplementedAuthServer() {}
 func (UnimplementedAuthServer) testEmbeddedByValue()              {}
@@ -304,6 +324,24 @@ func _Auth_Logout_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Auth_DeleteAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).DeleteAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_DeleteAccount_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).DeleteAccount(ctx, req.(*DeleteAccountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Auth_ServiceDesc is the grpc.ServiceDesc for Auth service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -334,6 +372,10 @@ var Auth_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Logout",
 			Handler:    _Auth_Logout_Handler,
+		},
+		{
+			MethodName: "DeleteAccount",
+			Handler:    _Auth_DeleteAccount_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -751,12 +751,11 @@ func (x *ValidateTOTPResponse) GetSessionkey() []byte {
 	return nil
 }
 
-// LogoutRequest запрос на удаление аккаунта
-// LogoutRequest account deletion request
+// LogoutRequest запрос на выход из аккаунта
+// LogoutRequest session deletion request
 type LogoutRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Sessionkey    []byte                 `protobuf:"bytes,1,opt,name=sessionkey,proto3" json:"sessionkey,omitempty"` // Ключ сессии / Session key
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`     // Пароль для подтверждения / Password for confirmation
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -798,15 +797,8 @@ func (x *LogoutRequest) GetSessionkey() []byte {
 	return nil
 }
 
-func (x *LogoutRequest) GetPassword() string {
-	if x != nil {
-		return x.Password
-	}
-	return ""
-}
-
-// LogoutResponse ответ на удаление аккаунта
-// LogoutResponse account deletion response
+// LogoutResponse ответ на удаление сессии
+// LogoutResponse session deletion response
 type LogoutResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -841,6 +833,94 @@ func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use LogoutResponse.ProtoReflect.Descriptor instead.
 func (*LogoutResponse) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{16}
+}
+
+type DeleteAccountRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Sessionkey    []byte                 `protobuf:"bytes,1,opt,name=sessionkey,proto3" json:"sessionkey,omitempty"` // Ключ сессии / Session key
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`     // Пароль для подтверждения/ password for confirmation
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteAccountRequest) Reset() {
+	*x = DeleteAccountRequest{}
+	mi := &file_auth_auth_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteAccountRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteAccountRequest) ProtoMessage() {}
+
+func (x *DeleteAccountRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteAccountRequest.ProtoReflect.Descriptor instead.
+func (*DeleteAccountRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *DeleteAccountRequest) GetSessionkey() []byte {
+	if x != nil {
+		return x.Sessionkey
+	}
+	return nil
+}
+
+func (x *DeleteAccountRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+type DeleteAccountResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteAccountResponse) Reset() {
+	*x = DeleteAccountResponse{}
+	mi := &file_auth_auth_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteAccountResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteAccountResponse) ProtoMessage() {}
+
+func (x *DeleteAccountResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteAccountResponse.ProtoReflect.Descriptor instead.
+func (*DeleteAccountResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{18}
 }
 
 var File_auth_auth_proto protoreflect.FileDescriptor
@@ -888,20 +968,26 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x14ValidateTOTPResponse\x12\x1e\n" +
 	"\n" +
 	"sessionkey\x18\x01 \x01(\fR\n" +
-	"sessionkey\"K\n" +
+	"sessionkey\"/\n" +
 	"\rLogoutRequest\x12\x1e\n" +
 	"\n" +
 	"sessionkey\x18\x01 \x01(\fR\n" +
+	"sessionkey\"\x10\n" +
+	"\x0eLogoutResponse\"R\n" +
+	"\x14DeleteAccountRequest\x12\x1e\n" +
+	"\n" +
+	"sessionkey\x18\x01 \x01(\fR\n" +
 	"sessionkey\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"\x10\n" +
-	"\x0eLogoutResponse2\x83\x03\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"\x17\n" +
+	"\x15DeleteAccountResponse2\xcd\x03\n" +
 	"\x04Auth\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x12<\n" +
 	"\tSetupTOTP\x12\x16.auth.SetupTOTPRequest\x1a\x17.auth.SetupTOTPResponse\x12T\n" +
 	"\x11SetupTOTPValidate\x12\x1e.auth.SetupTOTPValidateRequest\x1a\x1f.auth.SetupTOTPValidateResponse\x12E\n" +
 	"\fValidateTOTP\x12\x19.auth.ValidateTOTPRequest\x1a\x1a.auth.ValidateTOTPResponse\x123\n" +
-	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponseBAZ?github.com/go-chat-devs/proto-auth-x-gateway/gen/go/auth;authv1b\x06proto3"
+	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\x12H\n" +
+	"\rDeleteAccount\x12\x1a.auth.DeleteAccountRequest\x1a\x1b.auth.DeleteAccountResponseBAZ?github.com/go-chat-devs/proto-auth-x-gateway/gen/go/auth;authv1b\x06proto3"
 
 var (
 	file_auth_auth_proto_rawDescOnce sync.Once
@@ -915,7 +1001,7 @@ func file_auth_auth_proto_rawDescGZIP() []byte {
 	return file_auth_auth_proto_rawDescData
 }
 
-var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_auth_auth_proto_goTypes = []any{
 	(*RegisterRequest)(nil),           // 0: auth.RegisterRequest
 	(*RegisterResponse)(nil),          // 1: auth.RegisterResponse
@@ -934,6 +1020,8 @@ var file_auth_auth_proto_goTypes = []any{
 	(*ValidateTOTPResponse)(nil),      // 14: auth.ValidateTOTPResponse
 	(*LogoutRequest)(nil),             // 15: auth.LogoutRequest
 	(*LogoutResponse)(nil),            // 16: auth.LogoutResponse
+	(*DeleteAccountRequest)(nil),      // 17: auth.DeleteAccountRequest
+	(*DeleteAccountResponse)(nil),     // 18: auth.DeleteAccountResponse
 }
 var file_auth_auth_proto_depIdxs = []int32{
 	5,  // 0: auth.Key.url:type_name -> auth.Url
@@ -945,14 +1033,16 @@ var file_auth_auth_proto_depIdxs = []int32{
 	11, // 6: auth.Auth.SetupTOTPValidate:input_type -> auth.SetupTOTPValidateRequest
 	13, // 7: auth.Auth.ValidateTOTP:input_type -> auth.ValidateTOTPRequest
 	15, // 8: auth.Auth.Logout:input_type -> auth.LogoutRequest
-	1,  // 9: auth.Auth.Register:output_type -> auth.RegisterResponse
-	4,  // 10: auth.Auth.Login:output_type -> auth.LoginResponse
-	9,  // 11: auth.Auth.SetupTOTP:output_type -> auth.SetupTOTPResponse
-	12, // 12: auth.Auth.SetupTOTPValidate:output_type -> auth.SetupTOTPValidateResponse
-	14, // 13: auth.Auth.ValidateTOTP:output_type -> auth.ValidateTOTPResponse
-	16, // 14: auth.Auth.Logout:output_type -> auth.LogoutResponse
-	9,  // [9:15] is the sub-list for method output_type
-	3,  // [3:9] is the sub-list for method input_type
+	17, // 9: auth.Auth.DeleteAccount:input_type -> auth.DeleteAccountRequest
+	1,  // 10: auth.Auth.Register:output_type -> auth.RegisterResponse
+	4,  // 11: auth.Auth.Login:output_type -> auth.LoginResponse
+	9,  // 12: auth.Auth.SetupTOTP:output_type -> auth.SetupTOTPResponse
+	12, // 13: auth.Auth.SetupTOTPValidate:output_type -> auth.SetupTOTPValidateResponse
+	14, // 14: auth.Auth.ValidateTOTP:output_type -> auth.ValidateTOTPResponse
+	16, // 15: auth.Auth.Logout:output_type -> auth.LogoutResponse
+	18, // 16: auth.Auth.DeleteAccount:output_type -> auth.DeleteAccountResponse
+	10, // [10:17] is the sub-list for method output_type
+	3,  // [3:10] is the sub-list for method input_type
 	3,  // [3:3] is the sub-list for extension type_name
 	3,  // [3:3] is the sub-list for extension extendee
 	0,  // [0:3] is the sub-list for field type_name
@@ -969,7 +1059,7 @@ func file_auth_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_auth_proto_rawDesc), len(file_auth_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

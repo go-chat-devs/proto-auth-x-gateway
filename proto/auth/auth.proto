@@ -26,9 +26,13 @@ service Auth {
   // Validates TOTP code during login when 2FA is enabled
   rpc ValidateTOTP(ValidateTOTPRequest) returns (ValidateTOTPResponse);
   
-  // Logout удаляет аккаунт пользователя (требуется подтверждение паролем)
-  // Deletes user account (requires password confirmation)
+  // Logout удаляет сессию пользователя 
+  // Deletes user session
   rpc Logout(LogoutRequest) returns (LogoutResponse);
+
+  // DeleteAccount удаляет аккаунт пользователя (требуется подтверждение паролем)
+  // Deletes user account (requires password confirmation)
+  rpc DeleteAccount(DeleteAccountRequest) returns (DeleteAccountResponse);
 }
 
 // RegisterRequest запрос на регистрацию
@@ -128,15 +132,25 @@ message ValidateTOTPResponse {
   bytes sessionkey = 1;  // Ключ сессии при успешной проверке / Session key on successful validation
 }
 
-// LogoutRequest запрос на удаление аккаунта
-// LogoutRequest account deletion request
+// LogoutRequest запрос на выход из аккаунта
+// LogoutRequest session deletion request
 message LogoutRequest {
   bytes sessionkey = 1;  // Ключ сессии / Session key
-  string password = 2;   // Пароль для подтверждения / Password for confirmation
 }
 
-// LogoutResponse ответ на удаление аккаунта
-// LogoutResponse account deletion response
+// LogoutResponse ответ на удаление сессии
+// LogoutResponse session deletion response
 message LogoutResponse {
   // Пустой ответ / Empty response
+}
+
+//
+message DeleteAccountRequest {
+  bytes sessionkey = 1; // Ключ сессии / Session key
+  string password = 2;  // Пароль для подтверждения/ password for confirmation
+}
+
+
+message DeleteAccountResponse {
+  //Пустой ответ/ Empty response
 }
